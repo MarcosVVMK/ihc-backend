@@ -12,3 +12,36 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id Int @id @default(autoincrement())
+
+  email     String @unique
+  firstName String
+  lastName  String
+  password  String
+}
+
+// Patitient 
+// Nome
+// • Idade
+// • Sexo
+// • Raça/Cor
+// • Peso
+// • Altura
+// • Telefone
+// • Endereço
+// • CEP
+// • Pai
+// • Mãe
+// • Plano de Saúde
+// • Matrícula do Plano
+// • Vencimento da Carteirinha do Plano
+// • Numero do Prontuário
+// • Senha do Painel
+// • Data do atendimento
+// • Hora do atendimento
+
+model Patient {
+  id Int @id @default(autoincrement())
+}
