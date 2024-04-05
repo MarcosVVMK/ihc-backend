@@ -16,32 +16,34 @@ datasource db {
 model User {
   id Int @id @default(autoincrement())
 
-  email     String @unique
+  email     String    @unique
   firstName String
   lastName  String
   password  String
+  Patient   Patient[]
 }
-
-// Patitient 
-// Nome
-// • Idade
-// • Sexo
-// • Raça/Cor
-// • Peso
-// • Altura
-// • Telefone
-// • Endereço
-// • CEP
-// • Pai
-// • Mãe
-// • Plano de Saúde
-// • Matrícula do Plano
-// • Vencimento da Carteirinha do Plano
-// • Numero do Prontuário
-// • Senha do Painel
-// • Data do atendimento
-// • Hora do atendimento
 
 model Patient {
   id Int @id @default(autoincrement())
+
+  name               String
+  age                Int
+  gender             String
+  ethnicity          String
+  weight             Float
+  height             Float
+  phone              String
+  address            String
+  cep                String
+  father             String
+  mother             String
+  health_insurance   String
+  insurance_number   BigInt   @unique
+  insurance_due_date DateTime
+  password           String
+  service_date       DateTime
+  createdBy          User     @relation(fields: [userId], references: [id])
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  userId             Int
 }
